@@ -75,6 +75,7 @@ class DaKa(object):
 
         try:
             old_infos = re.findall(r'oldInfo: ({[^\n]+})', html)
+            old_infos = old_infos if len(old_infos) != 0 else re.findall(r'def = ({[^\n]+})', html)
             if len(old_infos) != 0:
                 old_info = json.loads(old_infos[0])
             else:
